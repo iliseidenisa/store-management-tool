@@ -62,4 +62,13 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         return productMapper.convertToDto(productRepository.save(created));
     }
+
+    @Override
+    public ProductDto changePrice(ProductDto dto) {
+        Product updatedProduct = productRepository.findById(dto.getId())
+                .orElseThrow(()-> new ResourceNotFoundException("Product Not Found"));
+
+        updatedProduct.setPrice(dto.getPrice());
+        return productMapper.convertToDto(productRepository.save(updatedProduct));
+    }
 }

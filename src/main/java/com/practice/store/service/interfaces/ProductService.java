@@ -17,4 +17,6 @@ public interface ProductService {
     ProductDto findById(Long id);
 
     ProductDto addProduct(ProductDtoCreate dto);
+
+    ProductDto changePrice(ProductDto dto);
 }
