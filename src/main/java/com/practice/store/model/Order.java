@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(unique = true)
+    private String orderNumber;
+    private LocalDate orderDate;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<OrderItem> items = new ArrayList<>();
 
